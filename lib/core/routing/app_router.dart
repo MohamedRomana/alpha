@@ -1,6 +1,7 @@
 // ignore_for_file: unused_local_variable
 import 'package:flutter/material.dart';
 import '../../features/start/spalsh/splash.dart';
+import '../../features/users/home/home.dart';
 import 'routes.dart';
 
 class AppRouter {
@@ -10,7 +11,8 @@ class AppRouter {
     switch (settings.name) {
       case Routes.splash:
         return _fadeRoute(builder: (_) => const Splash());
-    
+      case Routes.home:
+        return _fadeRoute(builder: (_) => const Home());
 
       default:
         // أي راوت من غير `case` بيقع هنا وبيفتح السبلاش — بنطبع تحذير في
@@ -22,8 +24,6 @@ class AppRouter {
         return _fadeRoute(builder: (_) => const Splash());
     }
   }
-
-
 
   /// A smooth fade + slide-up page transition applied to every route,
   /// giving a more polished feel than the default platform push.

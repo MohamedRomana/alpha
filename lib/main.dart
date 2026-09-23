@@ -71,7 +71,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           child: MaterialApp(
             theme: ThemeData(
               fontFamily: FontFamily.tajawalRegular,
-              scaffoldBackgroundColor: AppColors.backColor,
+              scaffoldBackgroundColor: Colors.black,
               textSelectionTheme: TextSelectionThemeData(
                 cursorColor: AppColors.primary,
                 selectionColor: AppColors.primary.withOpacity(0.5),
