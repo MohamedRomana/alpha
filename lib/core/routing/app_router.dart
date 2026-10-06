@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../features/auth/login/ui/login.dart';
 import '../../features/auth/register/ui/register.dart';
 import '../../features/start/spalsh/splash.dart';
+import '../../features/users/chats/ui/chats.dart';
 import '../../features/users/home/home.dart';
 import 'routes.dart';
 
@@ -19,6 +20,8 @@ class AppRouter {
         return _fadeRoute(builder: (_) => const LogIn());
         case Routes.register:
         return _fadeRoute(builder: (_) => const Register());
+        case Routes.chats:
+        return _fadeRoute(builder: (_) => const Chats());
 
       default:
         // أي راوت من غير `case` بيقع هنا وبيفتح السبلاش — بنطبع تحذير في

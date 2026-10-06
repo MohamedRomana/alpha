@@ -55,6 +55,7 @@ dependencies:
   country_pickers: ^3.0.1
   dotted_border: 2.1.0
   open_filex: ^4.7.0
+  flutter_staggered_animations: ^1.1.1
 
 dev_dependencies:
   build_runner: null
