@@ -1,8 +1,11 @@
 import 'package:alpha/core/widgets/custom_app_bar.dart';
+import 'package:alpha/features/users/chats/cubit/chats_cubit.dart';
 import 'package:alpha/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/colors.dart';
+import '../../../../core/di/dependancy_injection.dart';
 import '../../../../core/widgets/animation_gradient.dart';
 import '../../../../core/widgets/logo_animations.dart';
 import '../../../../gen/fonts.gen.dart';
@@ -20,7 +23,10 @@ class ChatDetails extends StatelessWidget {
       extendBody: true,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(150.h),
-        child: CustomAppBar(title: title),
+        child: BlocProvider(
+          create: (context) => ChatsCubit(getIt()),
+          child: CustomAppBar(title: title),
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
@@ -147,5 +153,3 @@ class ChatDetails extends StatelessWidget {
     );
   }
 }
-
-

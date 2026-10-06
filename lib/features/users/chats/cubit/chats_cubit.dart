@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../data/chat_repo.dart';
+import '../data/repo/chat_repo.dart';
 import 'chats_state.dart';
 
 class ChatsCubit extends Cubit<ChatsState> {
