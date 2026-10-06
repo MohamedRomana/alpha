@@ -1,16 +1,14 @@
 import 'package:alpha/core/widgets/animation_gradient.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../gen/assets.gen.dart';
 import '../../gen/fonts.gen.dart';
-import '../../generated/locale_keys.g.dart';
 import 'app_text.dart';
 import 'logo_animations.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
+  final String? title;
+  const CustomAppBar({super.key, this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +48,9 @@ class CustomAppBar extends StatelessWidget {
 
           SizedBox(width: 20.w),
           AppText(
-            text: LocaleKeys.chats.tr(),
+            text: title ?? "Alpha",
             size: 20.sp,
+            fontStyle: FontStyle.italic,
             family: FontFamily.tajawalBold,
             color: Colors.white,
           ),
