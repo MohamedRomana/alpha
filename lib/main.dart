@@ -76,9 +76,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               fontFamily: FontFamily.tajawalRegular,
               scaffoldBackgroundColor: Colors.black,
               textSelectionTheme: TextSelectionThemeData(
-                cursorColor: AppColors.primary,
-                selectionColor: AppColors.primary.withOpacity(0.5),
-                selectionHandleColor: AppColors.primary,
+                cursorColor: AppColors.secondray,
+                selectionColor: AppColors.secondray.withOpacity(0.5),
+                selectionHandleColor: AppColors.secondray,
               ),
             ),
             debugShowCheckedModeBanner: false,

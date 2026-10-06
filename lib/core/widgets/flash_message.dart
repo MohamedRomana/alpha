@@ -14,7 +14,7 @@ Color chooseFlashBckColor(FlashMessageType type) {
   Color color;
   switch (type) {
     case FlashMessageType.success:
-      color = AppColors.primary.withOpacity(0.8);
+      color = AppColors.onlineColor.withOpacity(0.8);
       break;
     case FlashMessageType.error:
       color = Colors.red.withOpacity(0.8);
@@ -57,13 +57,7 @@ void showFlashMessage({
             margin: EdgeInsetsDirectional.only(start: 16.w),
             clipBehavior: Clip.antiAlias,
             decoration: const BoxDecoration(shape: BoxShape.circle),
-            child: Image.asset(
-              Assets.img.logo.path,
-              color: FlashMessageType.app == type
-                  ? Colors.white
-                  : AppColors.primary,
-              fit: BoxFit.fill,
-            ),
+            child: Image.asset(Assets.img.logo.path, fit: BoxFit.fill),
           ),
           behavior: FlashBehavior.fixed,
           position: position,

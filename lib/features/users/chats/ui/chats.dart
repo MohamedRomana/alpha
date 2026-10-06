@@ -1,8 +1,11 @@
 import 'package:alpha/core/helper/extentions.dart';
 import 'package:alpha/core/widgets/app_text.dart';
+import 'package:alpha/features/users/chats/cubit/chats_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import '../../../../core/di/dependancy_injection.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/widgets/animation_gradient.dart';
 import '../../../../core/widgets/confirm_exit.dart';
@@ -24,7 +27,10 @@ class Chats extends StatelessWidget {
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(150.h),
-          child: CustomAppBar(),
+          child: BlocProvider(
+            create: (context) => ChatsCubit(getIt()),
+            child: CustomAppBar(),
+          ),
         ),
         body: AnimationLimiter(
           child: ListView.separated(
@@ -46,7 +52,10 @@ class Chats extends StatelessWidget {
                   child: FadeInAnimation(
                     child: InkWell(
                       onTap: () {
-                        context.pushNamed(Routes.chatDetails, arguments: 'User ${index + 1}');
+                        context.pushNamed(
+                          Routes.chatDetails,
+                          arguments: 'User ${index + 1}',
+                        );
                       },
                       child: Container(
                         height: 100.h,

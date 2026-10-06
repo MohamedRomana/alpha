@@ -1,6 +1,7 @@
 // ignore_for_file: unused_local_variable
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../features/auth/login/cubit/log_in_cubit.dart';
 import '../../features/auth/login/ui/login.dart';
 import '../../features/auth/register/logic/cubit/register_cubit.dart';
 import '../../features/auth/register/ui/register.dart';
@@ -21,7 +22,12 @@ class AppRouter {
       case Routes.home:
         return _fadeRoute(builder: (_) => const Home());
       case Routes.login:
-        return _fadeRoute(builder: (_) => const LogIn());
+        return _fadeRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => LogInCubit(logInRepo: getIt()),
+            child: const LogIn(),
+          ),
+        );
       case Routes.register:
         return _fadeRoute(
           builder: (_) => BlocProvider(
