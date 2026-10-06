@@ -2,13 +2,15 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/constants/colors.dart';
-import '../../../../core/widgets/app_text.dart';
-import '../../../../gen/fonts.gen.dart';
-import '../../../../generated/locale_keys.g.dart';
+import '../../../../../core/constants/colors.dart';
+import '../../../../../core/helper/extentions.dart';
+import '../../../../../core/routing/routes.dart';
+import '../../../../../core/widgets/app_text.dart';
+import '../../../../../gen/fonts.gen.dart';
+import '../../../../../generated/locale_keys.g.dart';
 
-class CustomLoginNewUser extends StatelessWidget {
-  const CustomLoginNewUser({super.key});
+class CustomRegisterLogin extends StatelessWidget {
+  const CustomRegisterLogin({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -51,16 +53,26 @@ class CustomLoginNewUser extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             AppText(
-              text: LocaleKeys.dontHaveAccount.tr(),
+              text: LocaleKeys.alreadyHaveAccount.tr(),
               size: 18.sp,
               color: Colors.white,
             ),
             SizedBox(width: 10.w),
-            AppText(
-              text: LocaleKeys.newUser.tr(),
-              size: 18.sp,
-              color: AppColors.dangerColor,
-              family: FontFamily.tajawalBold,
+            GestureDetector(
+              onTap: () {
+                context.pushNamedAndRemoveUntil(
+                  Routes.login,
+                  predicate: (Route<dynamic> route) {
+                    return false;
+                  },
+                );
+              },
+              child: AppText(
+                text: LocaleKeys.login.tr(),
+                size: 18.sp,
+                color: AppColors.dangerColor,
+                family: FontFamily.tajawalBold,
+              ),
             ),
           ],
         ),

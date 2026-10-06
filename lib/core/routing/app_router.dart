@@ -1,6 +1,7 @@
 // ignore_for_file: unused_local_variable
 import 'package:flutter/material.dart';
-import '../../features/auth/login/login.dart';
+import '../../features/auth/login/ui/login.dart';
+import '../../features/auth/register/ui/register.dart';
 import '../../features/start/spalsh/splash.dart';
 import '../../features/users/home/home.dart';
 import 'routes.dart';
@@ -16,6 +17,8 @@ class AppRouter {
         return _fadeRoute(builder: (_) => const Home());
       case Routes.login:
         return _fadeRoute(builder: (_) => const LogIn());
+        case Routes.register:
+        return _fadeRoute(builder: (_) => const Register());
 
       default:
         // أي راوت من غير `case` بيقع هنا وبيفتح السبلاش — بنطبع تحذير في

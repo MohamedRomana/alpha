@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/routing/routes.dart';
+import '../../../core/widgets/logo_animations.dart';
 import '../../../gen/assets.gen.dart';
 
 class Splash extends StatefulWidget {
@@ -26,7 +27,15 @@ class _SplashState extends State<Splash> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
-        child: Image.asset(Assets.img.logo.path, width: 350.w, height: 350.w),
+        child: AlphaLogoFX(
+          style: LogoAnimationStyle.splash,
+          child: Image.asset(
+            Assets.img.logo.path,
+            width: 250.w,
+            height: 250.w,
+            fit: BoxFit.cover,
+          ),
+        ),
       ),
     );
   }
