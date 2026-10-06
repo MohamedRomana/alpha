@@ -26,7 +26,7 @@ abstract class AppColors {
   /// لون الشعار — العلامة التجارية مسجّلة أسود مش أزرق، فالماركة بتتلوّن
   /// باللون ده في كل مكان بتظهر فيه.
   static const Color logoColor = Color(0xff000000);
-  static const Color secondray = Color(0xff306099);
+  static const Color secondray = Color(0xffBE1622);
   static const Color startButtonColor = Color(0xff0D8D90);
   static const Color textColor = Color(0xff424750);
   static const Color smallTextColor = Color(0xff727781);
