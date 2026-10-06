@@ -71,13 +71,11 @@ void showFlashMessage({
           shadowColor: Colors.black38,
           primaryAction: null,
           useSafeArea: false,
-          content: Flexible(
-            child: AppText(
-              text: message,
-              color: textColor ?? Colors.white,
-              lines: 2,
-              textAlign: TextAlign.center,
-            ),
+          content: AppText(
+            text: message,
+            color: textColor ?? Colors.white,
+            lines: 2,
+            textAlign: TextAlign.center,
           ),
         ),
       );

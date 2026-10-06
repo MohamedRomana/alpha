@@ -1,11 +1,14 @@
 // ignore_for_file: unused_local_variable
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/auth/login/ui/login.dart';
+import '../../features/auth/register/logic/cubit/register_cubit.dart';
 import '../../features/auth/register/ui/register.dart';
 import '../../features/start/spalsh/splash.dart';
 import '../../features/users/chat_details/ui/chat_details.dart';
 import '../../features/users/chats/ui/chats.dart';
 import '../../features/users/home/home.dart';
+import '../di/dependancy_injection.dart';
 import 'routes.dart';
 
 class AppRouter {
@@ -20,7 +23,12 @@ class AppRouter {
       case Routes.login:
         return _fadeRoute(builder: (_) => const LogIn());
       case Routes.register:
-        return _fadeRoute(builder: (_) => const Register());
+        return _fadeRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => RegisterCubit(registerRepo: getIt()),
+            child: const Register(),
+          ),
+        );
       case Routes.chats:
         return _fadeRoute(builder: (_) => const Chats());
       case Routes.chatDetails:

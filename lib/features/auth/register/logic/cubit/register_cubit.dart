@@ -10,11 +10,9 @@ class RegisterCubit extends Cubit<RegisterState> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
 
-  Future<void> register({
-    required String email,
-    required String password,
-  }) async {
+  Future<void> register() async {
     try {
       emit(RegisterState.registerLoading());
       final credential = _registerRepo.register(
@@ -33,6 +31,7 @@ class RegisterCubit extends Cubit<RegisterState> {
       emit(RegisterState.registerSuccess());
     } catch (e) {
       emit(RegisterState.registerFailure(error: e.toString()));
+      debugPrint("RegisterCubit: register error: ${e.toString()}");
     }
   }
 }

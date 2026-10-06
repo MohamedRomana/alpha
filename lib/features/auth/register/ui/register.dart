@@ -11,13 +11,16 @@ class Register extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body: Column(
-        children: [
-          CustomTopAuth(title: LocaleKeys.newUser.tr(),),
-          CustomRegisterFields(),
-          CustomRegisterLogin(),
-        ],
+    return Scaffold(
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            CustomTopAuth(title: LocaleKeys.newUser.tr()),
+            CustomRegisterFields(),
+            CustomRegisterLogin(),
+          ],
+        ),
       ),
     );
   }

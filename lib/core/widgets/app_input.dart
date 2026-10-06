@@ -131,11 +131,11 @@ class AppInput extends StatelessWidget {
         controller: controller,
         onFieldSubmitted: onSubmitted,
         style: TextStyle(
-          color: inputColor ?? AppColors.primary,
+          color: inputColor ?? Colors.white,
           fontSize: 16.sp,
         ),
         obscureText: secureText ?? false,
-        cursorColor: cursorColor ?? AppColors.primary,
+        cursorColor: cursorColor ?? AppColors.secondray,
         keyboardType: inputType ?? TextInputType.text,
         textInputAction: textInputAction ?? TextInputAction.next,
         validator: validate,
@@ -146,7 +146,7 @@ class AppInput extends StatelessWidget {
             borderRadius: BorderRadius.circular(border ?? 51.r),
             borderSide: BorderSide(
               // width: .1.w,
-              color: enabledBorderColor ?? AppColors.primary,
+              color: enabledBorderColor ?? AppColors.secondray,
             ),
           ),
           focusedBorder: OutlineInputBorder(
