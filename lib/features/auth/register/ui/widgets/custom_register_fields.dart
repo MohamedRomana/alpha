@@ -172,8 +172,9 @@ class _CustomRegisterFieldsState extends State<CustomRegisterFields> {
                       password: password,
                     );
                     context.pushNamedAndRemoveUntil(
-                      Routes.chats,
+                      Routes.chatDetails,
                       predicate: (_) => false,
+                      arguments: email.split('@').first,
                     );
                     showFlashMessage(
                       message: LocaleKeys.signUpSuccess.tr(),

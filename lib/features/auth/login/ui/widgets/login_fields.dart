@@ -129,8 +129,9 @@ class _CustomLoginFieldsState extends State<CustomLoginFields> {
                       context: context,
                     );
                     context.pushNamedAndRemoveUntil(
-                      Routes.chats,
+                      Routes.chatDetails,
                       predicate: (_) => false,
+                      arguments: email.split('@').first
                     );
                     setState(() {
                       isLoading = false;

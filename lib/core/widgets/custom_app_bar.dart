@@ -1,10 +1,10 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:alpha/core/helper/extentions.dart';
 import 'package:alpha/core/widgets/animation_gradient.dart';
 import 'package:alpha/core/widgets/flash_message.dart';
-import 'package:alpha/features/users/chats/cubit/chats_cubit.dart';
-import 'package:alpha/features/users/chats/cubit/chats_state.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../gen/assets.gen.dart';
 import '../../gen/fonts.gen.dart';
@@ -13,9 +13,18 @@ import '../routing/routes.dart';
 import 'app_text.dart';
 import 'logo_animations.dart';
 
-class CustomAppBar extends StatelessWidget {
+class CustomAppBar extends StatefulWidget {
   final String? title;
   const CustomAppBar({super.key, this.title});
+
+  @override
+  State<CustomAppBar> createState() => _CustomAppBarState();
+}
+
+class _CustomAppBarState extends State<CustomAppBar> {
+  final _auth = FirebaseAuth.instance;
+
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -55,52 +64,50 @@ class CustomAppBar extends StatelessWidget {
 
           SizedBox(width: 20.w),
           AppText(
-            text: title ?? "Alpha",
+            text: widget.title ?? "Alpha",
             size: 20.sp,
             fontStyle: FontStyle.italic,
             family: FontFamily.tajawalBold,
             color: Colors.white,
           ),
           Spacer(),
-          BlocConsumer<ChatsCubit, ChatsState>(
-            listener: (context, state) {
-              state.mapOrNull(
-                logOutSuccess: (value) {
-                  showFlashMessage(
-                    message: 'Success',
-                    type: FlashMessageType.success,
-                    context: context,
-                  );
-                  context.pushNamedAndRemoveUntil(
-                    Routes.login,
-                    predicate: (Route<dynamic> route) {
-                      return false;
-                    },
-                  );
-                },
-                logOutFailure: (value) {
-                  showFlashMessage(
-                    message: "Error",
-                    type: FlashMessageType.error,
-                    context: context,
-                  );
-                },
-              );
+          InkWell(
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () async {
+              setState(() {
+                isLoading = true;
+              });
+              try {
+                await _auth.signOut();
+                context.pushNamedAndRemoveUntil(
+                  Routes.login,
+                  predicate: (_) => false,
+                );
+                showFlashMessage(
+                  message: "Success",
+                  type: FlashMessageType.success,
+                  context: context,
+                );
+                setState(() {
+                  isLoading = false;
+                });
+              } catch (e) {
+                showFlashMessage(
+                  message: e.toString(),
+                  type: FlashMessageType.error,
+                  context: context,
+                );
+                setState(() {
+                  isLoading = false;
+                });
+              }
             },
-            builder: (context, state) {
-              return InkWell(
-                splashColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onTap: () {
-                  context.read<ChatsCubit>().logOut();
-                },
-                child: Icon(
-                  Icons.logout,
-                  size: 40.sp,
-                  color: AppColors.darkRed,
-                ),
-              );
-            },
+            child: Icon(
+              isLoading == true ? Icons.drag_indicator : Icons.logout,
+              size: 40.sp,
+              color: AppColors.darkRed,
+            ),
           ),
           SizedBox(width: 20.w),
         ],

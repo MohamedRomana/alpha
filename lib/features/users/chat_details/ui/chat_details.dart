@@ -1,11 +1,10 @@
 import 'package:alpha/core/widgets/custom_app_bar.dart';
-import 'package:alpha/features/users/chats/cubit/chats_cubit.dart';
+import 'package:alpha/core/widgets/flash_message.dart';
 import 'package:alpha/gen/assets.gen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/colors.dart';
-import '../../../../core/di/dependancy_injection.dart';
 import '../../../../core/widgets/animation_gradient.dart';
 import '../../../../core/widgets/logo_animations.dart';
 import '../../../../gen/fonts.gen.dart';
@@ -13,9 +12,39 @@ import 'widgets/back_groung_image.dart';
 import 'widgets/see_more_text.dart';
 import 'widgets/send_message.dart';
 
-class ChatDetails extends StatelessWidget {
+class ChatDetails extends StatefulWidget {
   final String title;
   const ChatDetails({super.key, required this.title});
+
+  @override
+  State<ChatDetails> createState() => _ChatDetailsState();
+}
+
+class _ChatDetailsState extends State<ChatDetails> {
+  final _auth = FirebaseAuth.instance;
+  late User signedInUser;
+
+  @override
+  void initState() {
+    getCurrentUser();
+    super.initState();
+  }
+
+  void getCurrentUser() {
+    try {
+      final user = _auth.currentUser;
+      if (user != null) {
+        signedInUser = user;
+        debugPrint("//////////////////////////${signedInUser.email}");
+      }
+    } catch (e) {
+      showFlashMessage(
+        message: e.toString(),
+        type: FlashMessageType.error,
+        context: context,
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +52,7 @@ class ChatDetails extends StatelessWidget {
       extendBody: true,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(150.h),
-        child: BlocProvider(
-          create: (context) => ChatsCubit(getIt()),
-          child: CustomAppBar(title: title),
-        ),
+        child: CustomAppBar(title: widget.title),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
