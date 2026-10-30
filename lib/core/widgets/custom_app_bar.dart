@@ -5,10 +5,12 @@ import 'package:alpha/core/widgets/animation_gradient.dart';
 import 'package:alpha/core/widgets/flash_message.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../gen/assets.gen.dart';
 import '../../gen/fonts.gen.dart';
 import '../constants/colors.dart';
+import '../cubit/theme_cubit.dart';
 import '../routing/routes.dart';
 import 'app_text.dart';
 import 'logo_animations.dart';
@@ -39,7 +41,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
       height: 130.h,
       padding: EdgeInsetsDirectional.only(top: 30.h),
       decoration: BoxDecoration(
-        color: Colors.black,
         borderRadius: BorderRadiusDirectional.only(
           bottomStart: Radius.circular(20.r),
           bottomEnd: Radius.circular(20.r),
@@ -67,27 +68,32 @@ class _CustomAppBarState extends State<CustomAppBar> {
             size: 20.sp,
             fontStyle: FontStyle.italic,
             family: FontFamily.tajawalBold,
-            color: Colors.white,
           ),
           Spacer(),
           if (widget.isHome == true) ...{
             Row(
               children: [
-                Icon(Icons.search, size: 25.sp, color: Colors.white),
+                IconButton(
+                  onPressed: () {
+                    context.read<ThemeCubit>().toggleTheme();
+                  },
+                  icon: Icon(
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Icons.light_mode
+                        : Icons.dark_mode,
+                  ),
+                ),
+                Icon(Icons.search, size: 25.sp),
                 SizedBox(width: 16.w),
                 Stack(
                   children: [
-                    Icon(
-                      Icons.notifications_outlined,
-                      size: 25.sp,
-                      color: Colors.white,
-                    ),
+                    Icon(Icons.notifications_outlined, size: 25.sp),
                     CircleAvatar(
                       radius: 6.r,
                       backgroundColor: AppColors.darkRed,
                       child: AppText(
                         text: '5',
-                        color: Colors.white,
+
                         size: 10.sp,
                         family: FontFamily.tajawalBold,
                       ),

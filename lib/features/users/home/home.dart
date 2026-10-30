@@ -36,7 +36,6 @@ class Home extends StatelessWidget {
               start: 16.sp,
               size: 25.sp,
               family: FontFamily.tajawalBold,
-              color: Colors.white,
             ),
             SizedBox(
               height: 150.h,
@@ -46,44 +45,46 @@ class Home extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => index == 0
-                    ? Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          Container(
-                            height: 80.w,
-                            width: 80.w,
-                            decoration: BoxDecoration(
-                              color: Colors.grey.withAlpha(50),
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                width: 2.w,
-                                color: ColorTween(
-                                  begin: Colors.red,
-                                  end: Colors.blue,
-                                ).lerp(index / 10)!,
-                              ),
-                            ),
-                            child: Center(
-                              child: Image.asset(
-                                Assets.img.logo.path,
-                                height: 55.w,
-                                width: 55.w,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
+                    ? Container(
+                        height: 80.w,
+                        width: 80.w,
+                        decoration: BoxDecoration(
+                          color: Colors.grey.withAlpha(50),
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            width: 2.w,
+                            color: ColorTween(
+                              begin: Colors.red,
+                              end: Colors.blue,
+                            ).lerp(index / 10)!,
                           ),
-                          PositionedDirectional(
-                            bottom: 20.h,
-                            end: 5.w,
-                            child: CircleAvatar(
-                              radius: 10.r,
-                              backgroundColor: Colors.white,
-                              child: Center(
-                                child: Icon(Icons.add, size: 20.sp),
+                        ),
+                        child: Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            Center(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(500.r),
+                                child: Image.asset(
+                                  Assets.img.logo.path,
+                                  height: 75.w,
+                                  width: 75.w,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                            PositionedDirectional(
+                              bottom: 20.h,
+                              end: -4.w,
+                              child: CircleAvatar(
+                                radius: 10.r,
+                                child: Center(
+                                  child: Icon(Icons.add, size: 20.sp),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       )
                     : Container(
                         height: 80.w,
@@ -138,7 +139,6 @@ class Home extends StatelessWidget {
                       text: 'Share an idea, moment, or discovery…',
                       lines: 2,
                       size: 12.sp,
-                      color: Colors.white,
                     ),
                   ),
                   Icon(Icons.image_outlined, size: 25.sp, color: Colors.grey),
@@ -201,7 +201,7 @@ class Home extends StatelessWidget {
                             AppText(
                               text: 'Mika Rowe',
                               size: 18.sp,
-                              color: Colors.white,
+
                               family: FontFamily.tajawalBold,
                             ),
                             AppText(
@@ -285,7 +285,7 @@ class Home extends StatelessWidget {
                                   start: 12.w,
                                   text: 'Luma Object Lamp',
                                   size: 10.sp,
-                                  color: Colors.white,
+
                                   family: FontFamily.tajawalBold,
                                 ),
                               ),
