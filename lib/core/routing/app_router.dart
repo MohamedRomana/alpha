@@ -15,13 +15,14 @@ class AppRouter {
       case Routes.splash:
         return _fadeRoute(builder: (_) => const Splash());
       case Routes.home:
-        return _fadeRoute(builder: (_) => const Home());
+        final argument = settings.arguments as String;
+        return _fadeRoute(builder: (_) => Home(name: argument));
       case Routes.login:
         return _fadeRoute(builder: (_) => const LogIn());
       case Routes.register:
         return _fadeRoute(builder: (_) => const Register());
       case Routes.chats:
-        // return _fadeRoute(builder: (_) => const Chats());
+      // return _fadeRoute(builder: (_) => const Chats());
       case Routes.chatDetails:
         final argument = settings.arguments as String;
         return _fadeRoute(builder: (_) => ChatDetails(title: argument));

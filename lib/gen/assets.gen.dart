@@ -49,6 +49,9 @@ class $AssetsImgGen {
   /// File path: assets/img/error.json
   String get error => 'assets/img/error.json';
 
+  /// File path: assets/img/img.jpg
+  AssetGenImage get img => const AssetGenImage('assets/img/img.jpg');
+
   /// File path: assets/img/internet_lost.json
   String get internetLost => 'assets/img/internet_lost.json';
 
@@ -68,6 +71,7 @@ class $AssetsImgGen {
   List<dynamic> get values => [
     emptyorder,
     error,
+    img,
     internetLost,
     loading,
     location,

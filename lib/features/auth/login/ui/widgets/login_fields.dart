@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:alpha/core/constants/colors.dart';
 import 'package:alpha/core/helper/extentions.dart';
 import 'package:alpha/core/widgets/flash_message.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -7,6 +8,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/routing/routes.dart';
+import '../../../../../core/widgets/app_animations.dart';
 import '../../../../../core/widgets/app_button.dart';
 import '../../../../../core/widgets/app_input.dart';
 import '../../../../../core/widgets/app_text.dart';
@@ -131,7 +133,7 @@ class _CustomLoginFieldsState extends State<CustomLoginFields> {
                     context.pushNamedAndRemoveUntil(
                       Routes.chatDetails,
                       predicate: (_) => false,
-                      arguments: email.split('@').first
+                      arguments: email.split('@').first,
                     );
                     setState(() {
                       isLoading = false;
@@ -156,6 +158,27 @@ class _CustomLoginFieldsState extends State<CustomLoginFields> {
                       color: Colors.white,
                       family: FontFamily.tajawalBold,
                     ),
+            ),
+          ),
+          SizedBox(height: 20.sp),
+          Center(
+            child: Pulse(
+              child: AppButton(
+                onPressed: () {
+                  context.pushNamedAndRemoveUntil(
+                    Routes.home,
+                    predicate: (_) => false,
+                    arguments: "Mohamed Romana".split(' ').first,
+                  );
+                },
+                color: Colors.black,
+                borderColor: AppColors.secondray,
+                child: AppText(
+                  text: LocaleKeys.skiptohome.tr(),
+                  size: 21.sp,
+                  color: AppColors.secondray,
+                ),
+              ),
             ),
           ),
         ],

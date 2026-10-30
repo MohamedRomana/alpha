@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/cache/cache_helper.dart';
-import 'core/connectivity/connectivity_gate.dart';
 import 'core/constants/colors.dart';
 import 'core/di/dependancy_injection.dart';
 import 'core/networking/bloc_observer.dart';
@@ -38,12 +37,12 @@ void main() async {
       saveLocale: true,
       useOnlyLangCode: true,
       startLocale: Locale(
-        CacheHelper.getLang() == "" ? "ar" : CacheHelper.getLang(),
+        CacheHelper.getLang() == "" ? "en" : CacheHelper.getLang(),
       ),
       assetLoader: const CodegenLoader(),
       path: 'assets/Lang',
       fallbackLocale: Locale(
-        CacheHelper.getLang() == "" ? "ar" : CacheHelper.getLang(),
+        CacheHelper.getLang() == "" ? "en" : CacheHelper.getLang(),
       ),
       child: MyApp(appRouter: AppRouter()),
     ),
@@ -82,7 +81,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               ),
             ),
             debugShowCheckedModeBanner: false,
-            builder: (context, child) => ConnectivityGate(child: child!),
+            builder: (context, child) => child!,
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,

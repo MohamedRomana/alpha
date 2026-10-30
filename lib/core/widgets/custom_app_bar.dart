@@ -15,7 +15,14 @@ import 'logo_animations.dart';
 
 class CustomAppBar extends StatefulWidget {
   final String? title;
-  const CustomAppBar({super.key, this.title});
+  final bool? isHome;
+  final bool? isBack;
+  const CustomAppBar({
+    super.key,
+    this.title,
+    this.isHome = false,
+    this.isBack = false,
+  });
 
   @override
   State<CustomAppBar> createState() => _CustomAppBarState();
@@ -37,14 +44,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
           bottomStart: Radius.circular(20.r),
           bottomEnd: Radius.circular(20.r),
         ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.white.withAlpha(50),
-            spreadRadius: 5.r,
-            blurRadius: 10.r,
-            offset: Offset(0, 0), // changes position of shadow
-          ),
-        ],
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -71,44 +70,72 @@ class _CustomAppBarState extends State<CustomAppBar> {
             color: Colors.white,
           ),
           Spacer(),
-          InkWell(
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: () async {
-              setState(() {
-                isLoading = true;
-              });
-              try {
-                await _auth.signOut();
-                context.pushNamedAndRemoveUntil(
-                  Routes.login,
-                  predicate: (_) => false,
-                );
-                showFlashMessage(
-                  message: "Success",
-                  type: FlashMessageType.success,
-                  context: context,
-                );
-                setState(() {
-                  isLoading = false;
-                });
-              } catch (e) {
-                showFlashMessage(
-                  message: e.toString(),
-                  type: FlashMessageType.error,
-                  context: context,
-                );
-                setState(() {
-                  isLoading = false;
-                });
-              }
-            },
-            child: Icon(
-              isLoading == true ? Icons.drag_indicator : Icons.logout,
-              size: 40.sp,
-              color: AppColors.darkRed,
+          if (widget.isHome == true) ...{
+            Row(
+              children: [
+                Icon(Icons.search, size: 25.sp, color: Colors.white),
+                SizedBox(width: 16.w),
+                Stack(
+                  children: [
+                    Icon(
+                      Icons.notifications_outlined,
+                      size: 25.sp,
+                      color: Colors.white,
+                    ),
+                    CircleAvatar(
+                      radius: 6.r,
+                      backgroundColor: AppColors.darkRed,
+                      child: AppText(
+                        text: '5',
+                        color: Colors.white,
+                        size: 10.sp,
+                        family: FontFamily.tajawalBold,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
-          ),
+          } else if (widget.isBack == true) ...{
+            InkWell(
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () async {
+                setState(() {
+                  isLoading = true;
+                });
+                try {
+                  await _auth.signOut();
+                  context.pushNamedAndRemoveUntil(
+                    Routes.login,
+                    predicate: (_) => false,
+                  );
+                  showFlashMessage(
+                    message: "Success",
+                    type: FlashMessageType.success,
+                    context: context,
+                  );
+                  setState(() {
+                    isLoading = false;
+                  });
+                } catch (e) {
+                  showFlashMessage(
+                    message: e.toString(),
+                    type: FlashMessageType.error,
+                    context: context,
+                  );
+                  setState(() {
+                    isLoading = false;
+                  });
+                }
+              },
+              child: Icon(
+                isLoading == true ? Icons.drag_indicator : Icons.logout,
+                size: 40.sp,
+                color: AppColors.darkRed,
+              ),
+            ),
+          },
           SizedBox(width: 20.w),
         ],
       ),
