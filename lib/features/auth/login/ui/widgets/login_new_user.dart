@@ -1,3 +1,4 @@
+import 'package:alpha/core/cache/cache_helper.dart';
 import 'package:alpha/core/helper/extentions.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,6 @@ class CustomLoginNewUser extends StatelessWidget {
         Stack(
           children: [
             Divider(
-              color: Colors.white,
               height: 50.h,
               thickness: 1.h,
               indent: 20.w,
@@ -35,13 +35,17 @@ class CustomLoginNewUser extends StatelessWidget {
                   Container(
                     height: 40.w,
                     width: 40.w,
-                    decoration: BoxDecoration(color: Colors.black),
+                    decoration: BoxDecoration(
+                      color: CacheHelper.getThemeMode() == false
+                          ? Colors.white
+                          : Colors.black,
+                    ),
                   ),
                   AppText(
                     top: 5.h,
                     text: LocaleKeys.or.tr(),
                     size: 16.sp,
-                    color: Colors.white,
+                    family: FontFamily.tajawalBold,
                   ),
                 ],
               ),
@@ -52,11 +56,7 @@ class CustomLoginNewUser extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AppText(
-              text: LocaleKeys.dontHaveAccount.tr(),
-              size: 18.sp,
-              color: Colors.white,
-            ),
+            AppText(text: LocaleKeys.dontHaveAccount.tr(), size: 18.sp),
             SizedBox(width: 10.w),
             GestureDetector(
               onTap: () {

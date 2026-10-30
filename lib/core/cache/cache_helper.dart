@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class CacheHelper {
   static late SharedPreferences _preferences;
 
@@ -20,6 +19,7 @@ class CacheHelper {
   static const _address = 'address';
   static const _lat = 'lat';
   static const _lng = 'lng';
+  static const _isDarkMode = 'isDarkMode';
 
   /// نسخة في الذاكرة من مفاتيح الجلسة.
   ///
@@ -79,6 +79,14 @@ class CacheHelper {
     return _tokenCache ?? _preferences.getString(_token) ?? '';
   }
 
+  static Future<void> setThemeMode(bool isDark) async {
+    await _preferences.setBool(_isDarkMode, isDark);
+  }
+
+  static bool getThemeMode() {
+    return _preferences.getBool(_isDarkMode) ?? true;
+  }
+
   static Future<void> setIsGuest(bool isGuest) async {
     _isGuestCache = isGuest;
     await _preferences.setBool(_isGuest, isGuest);
@@ -97,7 +105,6 @@ class CacheHelper {
   /// لوحدها، التوكن بيتكتب بعد ورتين await — والشاشة اللي بعد الدخول بتبعت
   /// أول ريكوست في نفس اللحظة فبيطلع من غير توكن، والسيرفر بيرد 401
   /// والمستخدم بيتطرد لشاشة الدخول بعد ما دخل بثانية.
-
 
   /// بيمسح الجلسة عند تسجيل الخروج أو حذف الحساب أو رجوع 401.
   static Future<void> clearUserSession() async {

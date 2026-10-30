@@ -137,6 +137,7 @@ class Home extends StatelessWidget {
                       start: 12.w,
                       text: 'Share an idea, moment, or discovery…',
                       lines: 2,
+                      size: 12.sp,
                       color: Colors.white,
                     ),
                   ),

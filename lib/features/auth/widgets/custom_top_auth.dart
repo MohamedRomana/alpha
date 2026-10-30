@@ -27,7 +27,6 @@ class CustomTopAuth extends StatelessWidget {
         AppText(
           text: title,
           size: 25.sp,
-          color: Colors.white,
           family: FontFamily.tajawalBold,
           fontWeight: FontWeight.w700,
         ),

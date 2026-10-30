@@ -43,7 +43,6 @@ class _CustomLoginFieldsState extends State<CustomLoginFields> {
           AppText(
             text: LocaleKeys.email.tr(),
             size: 16.sp,
-            color: Colors.white,
             bottom: 10.h,
             start: 16.w,
           ),
@@ -51,15 +50,11 @@ class _CustomLoginFieldsState extends State<CustomLoginFields> {
             start: 16.w,
             hint: LocaleKeys.yourEmail.tr(),
             inputType: TextInputType.emailAddress,
-            color: Colors.white.withAlpha(100),
             filled: true,
-            borderColorr: Colors.white,
-            enabledBorderColor: Colors.white,
             controller: _emailController,
             onChanged: (value) {
               email = value ?? "";
             },
-            hintColor: Colors.white.withAlpha(150),
             validate: (value) {
               if (value == null || value.isEmpty) {
                 return LocaleKeys.yourEmailValidate.tr();
@@ -72,7 +67,7 @@ class _CustomLoginFieldsState extends State<CustomLoginFields> {
           AppText(
             text: LocaleKeys.password.tr(),
             size: 16.sp,
-            color: Colors.white,
+            
             bottom: 10.h,
             start: 16.w,
           ),
@@ -80,15 +75,11 @@ class _CustomLoginFieldsState extends State<CustomLoginFields> {
             start: 16.w,
             hint: LocaleKeys.enter_password.tr(),
             inputType: TextInputType.emailAddress,
-            color: Colors.white.withAlpha(100),
             controller: _passwordController,
             onChanged: (value) {
               password = value ?? "";
             },
             filled: true,
-            borderColorr: Colors.white,
-            enabledBorderColor: Colors.white,
-            hintColor: Colors.white.withAlpha(150),
             secureText: !showPass,
             suffixIcon: InkWell(
               splashColor: Colors.transparent,

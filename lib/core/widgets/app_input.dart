@@ -130,10 +130,7 @@ class AppInput extends StatelessWidget {
         autovalidateMode: AutovalidateMode.onUserInteraction,
         controller: controller,
         onFieldSubmitted: onSubmitted,
-        style: TextStyle(
-          color: inputColor ?? Colors.white,
-          fontSize: 16.sp,
-        ),
+        style: TextStyle(color: inputColor ?? Colors.grey, fontSize: 16.sp),
         obscureText: secureText ?? false,
         cursorColor: cursorColor ?? AppColors.secondray,
         keyboardType: inputType ?? TextInputType.text,
@@ -146,12 +143,12 @@ class AppInput extends StatelessWidget {
             borderRadius: BorderRadius.circular(border ?? 51.r),
             borderSide: BorderSide(
               // width: .1.w,
-              color: enabledBorderColor ?? AppColors.secondray,
+              color: enabledBorderColor ?? Colors.grey,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(border ?? 51.r),
-            borderSide: BorderSide(color: focusedBorderColor ?? Colors.white),
+            borderSide: BorderSide(color: focusedBorderColor ?? AppColors.secondray),
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(border ?? 51.r),
@@ -167,7 +164,7 @@ class AppInput extends StatelessWidget {
           ),
           disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(border ?? 51.r),
-            borderSide: BorderSide(color: disableBorderColor ?? Colors.white),
+            borderSide: BorderSide(color: disableBorderColor ?? Colors.grey),
           ),
           contentPadding:
               contentPadding ??
@@ -178,7 +175,7 @@ class AppInput extends StatelessWidget {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(border ?? 51.r),
             borderSide: BorderSide(
-              color: outLineInputColorColor ?? Colors.white,
+              color: outLineInputColorColor ?? Colors.grey,
             ),
           ),
           filled: filled ?? false,
@@ -192,7 +189,7 @@ class AppInput extends StatelessWidget {
           labelText: label,
           labelStyle: TextStyle(
             fontSize: 14.sp,
-            color: labelColor ?? Colors.white,
+            color: labelColor ?? Colors.grey,
             fontFamily: FontFamily.tajawalRegular,
           ),
           hintStyle: TextStyle(

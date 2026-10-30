@@ -55,7 +55,7 @@ class AppText extends StatelessWidget {
           fontWeight: fontWeight,
           fontFamily: family,
           fontSize: size ?? 16.sp,
-          color: color ?? Colors.black,
+          color: color,
           fontStyle: fontStyle ?? FontStyle.normal,
           decoration: decoration,
           decorationColor: decorationColor ?? color,

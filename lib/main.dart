@@ -1,4 +1,5 @@
 // ignore_for_file: deprecated_member_use
+import 'package:alpha/core/cubit/theme_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -6,14 +7,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/cache/cache_helper.dart';
-import 'core/constants/colors.dart';
+import 'core/constants/app_theme.dart';
 import 'core/di/dependancy_injection.dart';
 import 'core/networking/bloc_observer.dart';
 import 'core/routing/app_router.dart';
 import 'core/routing/navigator_key.dart';
 import 'core/routing/routes.dart';
 import 'firebase_options.dart';
-import 'gen/fonts.gen.dart';
 import 'generated/codegen_loader.g.dart';
 
 void main() async {
@@ -62,35 +62,36 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(375, 812),
-      minTextAdapt: true,
-      useInheritedMediaQuery: true,
-      splitScreenMode: true,
-      builder: (BuildContext context, Widget? child) {
-        return GestureDetector(
-          onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-          child: MaterialApp(
-            theme: ThemeData(
-              fontFamily: FontFamily.tajawalRegular,
-              scaffoldBackgroundColor: Colors.black,
-              textSelectionTheme: TextSelectionThemeData(
-                cursorColor: AppColors.secondray,
-                selectionColor: AppColors.secondray.withOpacity(0.5),
-                selectionHandleColor: AppColors.secondray,
-              ),
-            ),
-            debugShowCheckedModeBanner: false,
-            builder: (context, child) => child!,
-            localizationsDelegates: context.localizationDelegates,
-            supportedLocales: context.supportedLocales,
-            locale: context.locale,
-            navigatorKey: navigatorKey,
-            onGenerateRoute: widget.appRouter.onGenerateRoute,
-            initialRoute: Routes.splash,
-          ),
-        );
-      },
+    return BlocProvider(
+      create: (context) => ThemeCubit(),
+      child: ScreenUtilInit(
+        designSize: const Size(375, 812),
+        minTextAdapt: true,
+        useInheritedMediaQuery: true,
+        splitScreenMode: true,
+        builder: (BuildContext context, Widget? child) {
+          return BlocBuilder<ThemeCubit, ThemeMode>(
+            builder: (context, state) {
+              return GestureDetector(
+                onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+                child: MaterialApp(
+                  theme: AppTheme.lightTheme,
+                  darkTheme: AppTheme.darkTheme,
+                  themeMode: state,
+                  debugShowCheckedModeBanner: false,
+                  builder: (context, child) => child!,
+                  localizationsDelegates: context.localizationDelegates,
+                  supportedLocales: context.supportedLocales,
+                  locale: context.locale,
+                  navigatorKey: navigatorKey,
+                  onGenerateRoute: widget.appRouter.onGenerateRoute,
+                  initialRoute: Routes.splash,
+                ),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/cache/cache_helper.dart';
 import '../../../../../core/constants/colors.dart';
 import '../../../../../core/helper/extentions.dart';
 import '../../../../../core/routing/routes.dart';
@@ -20,7 +21,6 @@ class CustomRegisterLogin extends StatelessWidget {
         Stack(
           children: [
             Divider(
-              color: Colors.white,
               height: 50.h,
               thickness: 1.h,
               indent: 20.w,
@@ -35,13 +35,17 @@ class CustomRegisterLogin extends StatelessWidget {
                   Container(
                     height: 40.w,
                     width: 40.w,
-                    decoration: BoxDecoration(color: Colors.black),
+                    decoration: BoxDecoration(
+                      color: CacheHelper.getThemeMode() == true
+                          ? Colors.black
+                          : Colors.white,
+                    ),
                   ),
                   AppText(
                     top: 5.h,
                     text: LocaleKeys.or.tr(),
                     size: 16.sp,
-                    color: Colors.white,
+                    family: FontFamily.tajawalBold,
                   ),
                 ],
               ),
@@ -52,11 +56,7 @@ class CustomRegisterLogin extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AppText(
-              text: LocaleKeys.alreadyHaveAccount.tr(),
-              size: 18.sp,
-              color: Colors.white,
-            ),
+            AppText(text: LocaleKeys.alreadyHaveAccount.tr(), size: 18.sp),
             SizedBox(width: 10.w),
             GestureDetector(
               onTap: () {

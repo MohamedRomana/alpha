@@ -7,7 +7,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/constants/colors.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/widgets/app_button.dart';
 import '../../../../../core/widgets/app_input.dart';
@@ -49,7 +48,6 @@ class _CustomRegisterFieldsState extends State<CustomRegisterFields> {
           AppText(
             text: LocaleKeys.email.tr(),
             size: 16.sp,
-            color: Colors.white,
             bottom: 10.h,
             start: 16.w,
           ),
@@ -60,13 +58,8 @@ class _CustomRegisterFieldsState extends State<CustomRegisterFields> {
             onChanged: (value) {
               email = value ?? "";
             },
-            color: Colors.white.withAlpha(100),
             filled: true,
             controller: _emailController,
-            borderColorr: Colors.white,
-            enabledBorderColor: AppColors.secondray,
-            focusedBorderColor: Colors.white,
-            hintColor: Colors.white.withAlpha(150),
             validate: (value) {
               if (value == null || value.isEmpty) {
                 return LocaleKeys.yourEmailValidate.tr();
@@ -79,7 +72,6 @@ class _CustomRegisterFieldsState extends State<CustomRegisterFields> {
           AppText(
             text: LocaleKeys.password.tr(),
             size: 16.sp,
-            color: Colors.white,
             bottom: 10.h,
             start: 16.w,
           ),
@@ -91,7 +83,6 @@ class _CustomRegisterFieldsState extends State<CustomRegisterFields> {
             onChanged: (value) {
               password = value ?? "";
             },
-            color: Colors.white.withAlpha(100),
             filled: true,
             secureText: !showPass,
             suffixIcon: InkWell(
@@ -104,11 +95,8 @@ class _CustomRegisterFieldsState extends State<CustomRegisterFields> {
               },
               child: Icon(
                 showPass == true ? Icons.visibility : Icons.visibility_off,
-                color: Colors.white.withAlpha(150),
               ),
             ),
-            borderColorr: Colors.white,
-            hintColor: Colors.white.withAlpha(150),
             validate: (value) {
               if (value == null || value.isEmpty) {
                 return LocaleKeys.passwordValidate.tr();
@@ -120,7 +108,6 @@ class _CustomRegisterFieldsState extends State<CustomRegisterFields> {
           AppText(
             text: LocaleKeys.confirmPassword.tr(),
             size: 16.sp,
-            color: Colors.white,
             bottom: 10.h,
             start: 16.w,
           ),
@@ -129,7 +116,6 @@ class _CustomRegisterFieldsState extends State<CustomRegisterFields> {
             hint: LocaleKeys.enter_password.tr(),
             controller: _passwordConfirmedController,
             inputType: TextInputType.visiblePassword,
-            color: Colors.white.withAlpha(100),
             filled: true,
             secureText: !showConfirmPass,
             suffixIcon: InkWell(
@@ -144,11 +130,8 @@ class _CustomRegisterFieldsState extends State<CustomRegisterFields> {
                 showConfirmPass == true
                     ? Icons.visibility
                     : Icons.visibility_off,
-                color: Colors.white.withAlpha(150),
               ),
             ),
-            borderColorr: Colors.white,
-            hintColor: Colors.white.withAlpha(150),
             validate: (value) {
               if (value!.isEmpty ||
                   _passwordController != _passwordConfirmedController) {
