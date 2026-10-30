@@ -16,26 +16,33 @@ class Home extends StatelessWidget {
 
     final day = DateFormat('EEEE').format(now); // Monday
     final time = DateFormat('hh:mm a').format(now); // 03:58 PM
+    final period = DateFormat('a').format(now);
+
+    final hour = now.hour;
+
+    final String greeting;
+
+    if (hour >= 5 && hour < 12) {
+      greeting = 'Good Morning';
+    } else if (hour >= 12 && hour < 17) {
+      greeting = 'Good Afternoon';
+    } else if (hour >= 17 && hour < 21) {
+      greeting = 'Good Evening';
+    } else {
+      greeting = 'Good Night';
+    }
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomAppBar(isHome: true),
-            AppText(
-              text: '$day  :  $time',
-              start: 16.sp,
-              size: 16.sp,
-              family: FontFamily.tajawalMedium,
-              color: Colors.grey,
-              fontStyle: FontStyle.italic,
-            ),
-
-            AppText(
-              text: 'Good morning,  $name.',
-              start: 16.sp,
-              size: 25.sp,
-              family: FontFamily.tajawalBold,
+            CustomWelcome(
+              day: day,
+              time: time,
+              period: period,
+              name: name,
+              greeting: greeting,
             ),
             SizedBox(
               height: 150.h,
@@ -436,6 +443,47 @@ class Home extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class CustomWelcome extends StatelessWidget {
+  const CustomWelcome({
+    super.key,
+    required this.day,
+    required this.time,
+    required this.period,
+    required this.name,
+    required this.greeting,
+  });
+
+  final String day;
+  final String time;
+  final String period;
+  final String? name;
+  final String greeting;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+
+      children: [
+        AppText(
+          text: '$day  :  $time ',
+          start: 16.sp,
+          size: 16.sp,
+          family: FontFamily.tajawalMedium,
+          color: Colors.grey,
+          fontStyle: FontStyle.italic,
+        ),
+        AppText(
+          text: '$greeting, ${name ?? ''}',
+          start: 16.sp,
+          size: 25.sp,
+          family: FontFamily.tajawalBold,
+        ),
+      ],
     );
   }
 }
