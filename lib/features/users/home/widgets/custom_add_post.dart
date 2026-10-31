@@ -10,11 +10,11 @@ class CustomAddPost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
-      margin: EdgeInsets.symmetric(horizontal: 21.w, vertical: 20.h),
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 15.h),
+      margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 15.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.r),
-        border: Border.all(width: 1.r, color: Colors.grey),
+        border: Border.all(width: 0.5.r, color: Colors.grey),
       ),
       child: Row(
         children: [
@@ -22,13 +22,13 @@ class CustomAddPost extends StatelessWidget {
             borderRadius: BorderRadius.circular(500.r),
             child: Image.asset(
               Assets.img.img.path,
-              height: 50.w,
-              width: 50.w,
+              height: 40.w,
+              width: 40.w,
               fit: BoxFit.cover,
             ),
           ),
           SizedBox(
-            width: 220.w,
+            width: 250.w,
             child: AppText(
               start: 12.w,
               text: 'Share an idea, moment, or discovery…',

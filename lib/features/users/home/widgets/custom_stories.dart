@@ -9,7 +9,7 @@ class CustomStories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 150.h,
+      height: 100.h,
       child: ListView.separated(
         separatorBuilder: (context, index) => SizedBox(width: 10.w),
         itemCount: 10,
@@ -17,8 +17,8 @@ class CustomStories extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => index == 0
             ? Container(
-                height: 80.w,
-                width: 80.w,
+                height: 70.w,
+                width: 70.w,
                 decoration: BoxDecoration(
                   color: Colors.grey.withAlpha(50),
                   shape: BoxShape.circle,
@@ -38,8 +38,8 @@ class CustomStories extends StatelessWidget {
                         borderRadius: BorderRadius.circular(500.r),
                         child: Image.asset(
                           Assets.img.logo.path,
-                          height: 75.w,
-                          width: 75.w,
+                          height: 55.w,
+                          width: 55.w,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -56,8 +56,8 @@ class CustomStories extends StatelessWidget {
                 ),
               )
             : Container(
-                height: 80.w,
-                width: 80.w,
+                height: 70.w,
+                width: 70.w,
                 decoration: BoxDecoration(
                   color: Colors.grey.withAlpha(50),
                   shape: BoxShape.circle,
@@ -74,8 +74,8 @@ class CustomStories extends StatelessWidget {
                     borderRadius: BorderRadius.circular(500.r),
                     child: Image.asset(
                       Assets.img.img.path,
-                      height: 75.w,
-                      width: 75.w,
+                      height: 55.w,
+                      width: 55.w,
                       fit: BoxFit.cover,
                     ),
                   ),

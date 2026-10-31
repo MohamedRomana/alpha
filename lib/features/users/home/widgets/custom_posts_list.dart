@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'posts_widgets/custom_normal_posts.dart';
+import 'posts_widgets/custom_reels.dart';
 import 'posts_widgets/custom_suggest_people.dart';
 
 class CustomPostsList extends StatelessWidget {
@@ -18,10 +19,10 @@ class CustomPostsList extends StatelessWidget {
             ? CustomNormalPosts()
             : index == 1
             ? CustomSuggestPeople()
+            : index == 2
+            ? CustomReels()
             : SizedBox.shrink();
       },
     );
   }
 }
-
-

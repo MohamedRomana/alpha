@@ -1,5 +1,6 @@
 import 'package:alpha/core/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'widgets/custom_add_post.dart';
 import 'widgets/custom_posts_list.dart';
@@ -47,6 +48,7 @@ class Home extends StatelessWidget {
             ),
             CustomStories(),
             CustomAddPost(),
+            SizedBox(height: 10.h,),
             CustomSignalRow(),
             CustomPostsList(),
           ],
