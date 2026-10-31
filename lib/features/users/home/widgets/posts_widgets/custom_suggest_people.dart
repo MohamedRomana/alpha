@@ -1,3 +1,4 @@
+import 'package:alpha/core/cache/cache_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -98,13 +99,19 @@ class CustomSuggestPeople extends StatelessWidget {
                       onPressed: () {},
                       height: 30.h,
                       width: 150.w,
-                      color: Colors.grey[900],
-                      borderColor: Colors.white,
+                      color: CacheHelper.getThemeMode() == true
+                          ? Colors.grey[900]
+                          : Colors.white,
+                      borderColor: CacheHelper.getThemeMode() == true
+                          ? Colors.white
+                          : Colors.black,
                       borderWidth: 0.3.w,
                       child: AppText(
                         text: 'Connect',
                         size: 14.sp,
-                        color: Colors.white,
+                        color: CacheHelper.getThemeMode() == true
+                            ? Colors.white
+                            : Colors.black,
                       ),
                     ),
                     SizedBox(height: 10.h),
