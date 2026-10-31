@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'posts_widgets/custom_normal_posts.dart';
 import 'posts_widgets/custom_reels.dart';
 import 'posts_widgets/custom_suggest_people.dart';
+import 'posts_widgets/custom_votes_posts.dart';
 
 class CustomPostsList extends StatelessWidget {
   const CustomPostsList({super.key});
@@ -21,8 +22,11 @@ class CustomPostsList extends StatelessWidget {
             ? CustomSuggestPeople()
             : index == 2
             ? CustomReels()
-            : SizedBox.shrink();
+            : index == 3
+            ? CustomVotesPosts()
+            : CustomNormalPosts();
       },
     );
   }
 }
+
