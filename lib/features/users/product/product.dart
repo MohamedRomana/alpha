@@ -4,6 +4,9 @@ import '../../../gen/assets.gen.dart';
 import 'widgets/custom_about_product.dart';
 import 'widgets/custom_product_color.dart';
 import 'widgets/custom_product_images.dart';
+import 'widgets/custom_product_object.dart';
+import 'widgets/custom_product_rates.dart';
+import 'widgets/custom_quantity.dart';
 import 'widgets/product_top_bar.dart';
 
 class Product extends StatelessWidget {
@@ -30,6 +33,9 @@ class Product extends StatelessWidget {
             CustomProductImages(images: images),
             CustomAboutProduct(),
             CustomProductColor(),
+            CustomQuantity(),
+            CustomProductObjectImage(),
+            CustomProductRates(),
           ],
         ),
       ),

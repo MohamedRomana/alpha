@@ -10,6 +10,7 @@ class CustomProductColor extends StatefulWidget {
   @override
   State<CustomProductColor> createState() => _CustomProductColorState();
 }
+
 class _CustomProductColorState extends State<CustomProductColor> {
   List colors = [
     {"color": Colors.red, "name": "Red"},
@@ -48,12 +49,12 @@ class _CustomProductColorState extends State<CustomProductColor> {
         ),
         SizedBox(height: 10.h),
         SizedBox(
-          height: 50.h,
+          height: 100.h,
           child: ListView.separated(
             shrinkWrap: true,
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
             itemCount: colors.length,
-            separatorBuilder: (context, index) => SizedBox(width: 10.w),
+            padding: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
+            separatorBuilder: (context, index) => SizedBox(width: 20.w),
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return InkWell(
@@ -62,24 +63,45 @@ class _CustomProductColorState extends State<CustomProductColor> {
                 onTap: () async {
                   colorTab(index);
                 },
-                child: Container(
-                  width: 50.w,
-                  decoration: BoxDecoration(
-                    color: colors[index]['color'],
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: currentIndex == index
-                          ? Colors.grey
-                          : Colors.transparent,
-                      width: 2.w,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 60.w,
+                      width: 60.w,
+                      padding: EdgeInsets.all(3.w),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: currentIndex == index
+                              ? Colors.grey
+                              : Colors.transparent,
+                          width: 1.w,
+                        ),
+                      ),
+                      child: Container(
+                        height: 60.w,
+                        width: 60.w,
+                        decoration: BoxDecoration(
+                          color: colors[index]['color'],
+                          shape: BoxShape.circle,
+                        ),
+                      ),
                     ),
-                  ),
+                    SizedBox(height: 10.h),
+                    AppText(
+                      text: colors[index]['name'],
+                      size: 14.sp,
+                      color: Colors.grey,
+                      family: FontFamily.tajawalBold,
+                    ),
+                  ],
                 ),
               );
             },
           ),
         ),
-        SizedBox(height: 10.h),
+        SizedBox(height: 30.h),
       ],
     );
   }
