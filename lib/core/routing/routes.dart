@@ -5,4 +5,5 @@ class Routes {
   static const String register = '/register';
   static const String chats = '/chats';
   static const String chatDetails = '/chat_details';
+  static const String post = '/post';
 }

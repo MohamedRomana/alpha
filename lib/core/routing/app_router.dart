@@ -5,6 +5,7 @@ import '../../features/auth/register/ui/register.dart';
 import '../../features/start/spalsh/splash.dart';
 import '../../features/users/chat_details/ui/chat_details.dart';
 import '../../features/users/home/home.dart';
+import '../../features/users/post/post.dart';
 import 'routes.dart';
 
 class AppRouter {
@@ -26,6 +27,8 @@ class AppRouter {
       case Routes.chatDetails:
         final argument = settings.arguments as String;
         return _fadeRoute(builder: (_) => ChatDetails(title: argument));
+      case Routes.post:
+        return _fadeRoute(builder: (_) => const Post());
 
       default:
         // أي راوت من غير `case` بيقع هنا وبيفتح السبلاش — بنطبع تحذير في

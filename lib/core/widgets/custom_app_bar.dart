@@ -19,11 +19,13 @@ class CustomAppBar extends StatefulWidget {
   final String? title;
   final bool? isHome;
   final bool? isBack;
+  final bool? arrow;
   const CustomAppBar({
     super.key,
     this.title,
     this.isHome = false,
     this.isBack = false,
+    this.arrow = false,
   });
 
   @override
@@ -50,17 +52,27 @@ class _CustomAppBarState extends State<CustomAppBar> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(width: 20.w),
-          AnimatedGradientCircle(
-            child: AlphaLogoFX(
-              style: LogoAnimationStyle.auth,
-              child: Image.asset(
-                Assets.img.logo.path,
-                width: 30.w,
-                height: 30.w,
-                fit: BoxFit.cover,
+          if (widget.arrow == true) ...{
+            IconButton(
+              padding: EdgeInsets.zero,
+              onPressed: () {
+                context.pop();
+              },
+              icon: Icon(Icons.arrow_back, size: 25.sp),
+            ),
+          } else ...{
+            AnimatedGradientCircle(
+              child: AlphaLogoFX(
+                style: LogoAnimationStyle.auth,
+                child: Image.asset(
+                  Assets.img.logo.path,
+                  width: 30.w,
+                  height: 30.w,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
+          },
 
           SizedBox(width: 20.w),
           AppText(
