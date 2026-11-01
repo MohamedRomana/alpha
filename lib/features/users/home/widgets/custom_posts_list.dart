@@ -20,8 +20,8 @@ class CustomPostsList extends StatelessWidget {
             ? CustomNormalPosts()
             : index == 1
             ? CustomSuggestPeople()
-            // : index == 2
-            // ? CustomReels()
+            : index == 2
+            ? CustomReels()
             : index == 3
             ? CustomVotesPosts()
             : CustomNormalPosts();
@@ -29,4 +29,3 @@ class CustomPostsList extends StatelessWidget {
     );
   }
 }
-
