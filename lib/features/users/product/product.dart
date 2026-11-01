@@ -7,6 +7,7 @@ import 'widgets/custom_product_images.dart';
 import 'widgets/custom_product_object.dart';
 import 'widgets/custom_product_rates.dart';
 import 'widgets/custom_quantity.dart';
+import 'widgets/custom_related_objects.dart';
 import 'widgets/product_top_bar.dart';
 
 class Product extends StatelessWidget {
@@ -36,9 +37,11 @@ class Product extends StatelessWidget {
             CustomQuantity(),
             CustomProductObjectImage(),
             CustomProductRates(),
+            CustomRelatedObjects(),
           ],
         ),
       ),
     );
   }
 }
+

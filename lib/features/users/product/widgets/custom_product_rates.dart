@@ -145,7 +145,13 @@ class CustomProductRates extends StatelessWidget {
           itemCount: 2,
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
-          separatorBuilder: (context, index) => SizedBox(height: 25.h),
+          separatorBuilder: (context, index) => Divider(
+            color: Colors.grey.withAlpha(50),
+            height: 40.h,
+            thickness: 1.h,
+            indent: 16.w,
+            endIndent: 16.w,
+          ),
           itemBuilder: (context, index) {
             return Row(
               crossAxisAlignment: CrossAxisAlignment.start,
