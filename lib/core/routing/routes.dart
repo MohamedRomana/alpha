@@ -6,4 +6,5 @@ class Routes {
   static const String chats = '/chats';
   static const String chatDetails = '/chat_details';
   static const String post = '/post';
+  static const String product = '/product';
 }
