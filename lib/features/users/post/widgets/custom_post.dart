@@ -81,74 +81,6 @@ class CustomPost extends StatelessWidget {
           ),
 
           SizedBox(height: 30.h),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
-            margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
-            decoration: BoxDecoration(
-              color: Colors.deepPurple.withAlpha(20),
-              borderRadius: BorderRadius.circular(20.r),
-              border: Border.all(width: 1.r, color: Colors.grey),
-            ),
-            child: Row(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(5.r),
-                  child: Image.asset(
-                    Assets.img.img.path,
-                    height: 50.w,
-                    width: 80.w,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      child: AppText(
-                        start: 12.w,
-                        text: 'FRAME EIGHT · PRODUCT',
-                        size: 10.sp,
-                        color: Colors.deepPurple,
-                      ),
-                    ),
-                    SizedBox(
-                      child: AppText(
-                        start: 12.w,
-                        text: 'Luma Object Lamp',
-                        size: 10.sp,
-
-                        family: FontFamily.tajawalBold,
-                      ),
-                    ),
-                    SizedBox(
-                      child: AppText(
-                        start: 12.w,
-                        text: '£248',
-                        size: 10.sp,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ],
-                ),
-                Spacer(),
-                Row(
-                  children: [
-                    AppText(
-                      start: 12.w,
-                      text: 'view products',
-                      size: 10.sp,
-                      color: Colors.deepPurple,
-                    ),
-                    Icon(
-                      Icons.arrow_forward_ios,
-                      size: 15.sp,
-                      color: Colors.deepPurple,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
           Row(
             children: [
               Row(
@@ -201,6 +133,7 @@ class CustomPost extends StatelessWidget {
               ),
             ],
           ),
+          SizedBox(height: 15.h),
           Divider(color: Colors.grey),
           SizedBox(height: 15.h),
           Row(
